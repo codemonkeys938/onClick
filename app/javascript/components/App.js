@@ -8,6 +8,7 @@ import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
 import ErrorPage from './pages/ErrorPage'
 import Footer from './components/Footer'
+import Navigation from './components/Navigation'
 
 class App extends Component {
   render() {
@@ -18,6 +19,7 @@ class App extends Component {
     console.log(logged_in, current_user)
     return (
       <Router>
+        <Navigation {...this.props} />
         <Switch>
           {!logged_in &&
             <Route
