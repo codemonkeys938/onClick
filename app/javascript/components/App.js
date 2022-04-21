@@ -7,6 +7,7 @@ import {
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
 import ErrorPage from './pages/ErrorPage'
+import LandingPage from './pages/LandingPage'
 import Footer from './components/Footer'
 
 class App extends Component {
@@ -19,6 +20,11 @@ class App extends Component {
     return (
       <Router>
         <Switch>
+          {!logged_in &&
+            <Route
+              exact path='/'
+              component={LandingPage} />
+          }
           {!logged_in &&
             <Route
               exact
