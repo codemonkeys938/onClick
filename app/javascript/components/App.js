@@ -7,6 +7,7 @@ import {
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
 import ErrorPage from './pages/ErrorPage'
+import LandingPage from './pages/LandingPage'
 import Footer from './components/Footer'
 import Navigation from './components/Navigation'
 
@@ -21,6 +22,11 @@ class App extends Component {
       <Router>
         <Navigation {...this.props} />
         <Switch>
+          {!logged_in &&
+            <Route
+              exact path='/'
+              component={LandingPage} />
+          }
           {!logged_in &&
             <Route
               exact
