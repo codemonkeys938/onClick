@@ -7,6 +7,7 @@ import {
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
 import ErrorPage from './pages/ErrorPage'
+import Footer from './components/Footer'
 
 class App extends Component {
   render() {
@@ -34,6 +35,7 @@ class App extends Component {
           }
           <Route path='*' component={ErrorPage} />
         </Switch>
+        <Footer />
       </Router>
     )
   }
