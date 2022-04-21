@@ -6,6 +6,7 @@ import {
 } from 'react-router-dom'
 import SignIn from './pages/SignIn'
 import SignUp from './pages/SignUp'
+import ErrorPage from './pages/ErrorPage'
 
 class App extends Component {
   render() {
@@ -31,6 +32,7 @@ class App extends Component {
               component={SignUp}
             />
           }
+          <Route path='*' component={ErrorPage} />
         </Switch>
       </Router>
     )
