@@ -51,6 +51,14 @@ class Navigation extends Component {
                 Our Mission
               </NavLink>
             </NavItem>
+            <NavItem>
+              <NavLink
+                to='/aboutus'
+                className='nav-link'
+              >
+                About Us
+              </NavLink>
+            </NavItem>
             {!logged_in &&
               <NavItem>
                 <NavLink

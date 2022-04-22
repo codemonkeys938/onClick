@@ -9,6 +9,7 @@ import SignUp from './pages/SignUp'
 import ErrorPage from './pages/ErrorPage'
 import LandingPage from './pages/LandingPage'
 import MissionPage from './pages/MissionPage'
+import AboutUs from './pages/AboutUs'
 import Footer from './components/Footer'
 import Navigation from './components/Navigation'
 
@@ -43,6 +44,7 @@ class App extends Component {
             />
           }
           <Route exact path='/missionpage' component={MissionPage} />
+          <Route exact path='/aboutus' component={AboutUs} />
           <Route path='*' component={ErrorPage} />
         </Switch>
         <Footer />
