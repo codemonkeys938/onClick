@@ -45,7 +45,7 @@ class Navigation extends Component {
             </NavItem>
             <NavItem>
               <NavLink
-                to='missionpage'
+                to='/missionpage'
                 className='nav-link'
               >
                 Our Mission

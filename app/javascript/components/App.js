@@ -42,7 +42,7 @@ class App extends Component {
               component={SignUp}
             />
           }
-          <Route path='*' component={MissionPage} />
+          <Route exact path='/missionpage' component={MissionPage} />
           <Route path='*' component={ErrorPage} />
         </Switch>
         <Footer />
