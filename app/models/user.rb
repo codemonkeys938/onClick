@@ -6,6 +6,8 @@ class User < ApplicationRecord
 
   has_many :groups
 
+  has_many :posts
+
   validates :username, :password_confirmation, presence: true
   validates :username, uniqueness: true
 end

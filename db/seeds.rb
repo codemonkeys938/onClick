@@ -70,6 +70,45 @@ groups = [
   }
 ]
 
+posts = [
+  {
+    post_text: 'Legend has it that the 1st cheese was created 4,000 years ago, accidentally!',
+    group_id: 1
+  },
+  {
+    post_text: 'It takes about 10 pounds of milk to make just 1 pound of cheese!',
+    group_id: 1
+  },
+  {
+    post_text: 'Just found out some cheeses are illegal in the United States.',
+    group_id: 1
+  },
+  {
+    post_text: 'Many lactose intolerant people can eat cheese!',
+    group_id: 1
+  },
+  {
+    post_text: 'Who knew null was an object?',
+    group_id: 2
+  },
+  {
+    post_text: 'NaN is actually a number (typeof NaN > "number") and (NaN === NaN > false). How about that?',
+    group_id: 2
+  },
+  {
+    post_text: 'Reminder to everyone, 0 evaluates to false!',
+    group_id: 2
+  },
+  {
+    post_text: "El Cotixan for some bomb Mexican food if your're in the El Cajon area",
+    group_id: 4
+  },
+  {
+    post_text: 'Has anyone tried Menya Ultra in Kearny Mesa? Is it any good?',
+    group_id: 4
+  }
+]
+
 users.each do |attr|
   user = User.create(attr)
   puts('Created user:')
@@ -81,4 +120,11 @@ groups.each_with_index do |attr, i|
   group = user.groups.create(attr)
   puts('Created group:')
   p group
+end
+
+posts.each do |attr|
+  user = User.find(rand(1..users.length))
+  post = user.posts.create(attr)
+  puts ('Created post:')
+  p post
 end
