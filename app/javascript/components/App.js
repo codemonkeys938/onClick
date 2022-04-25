@@ -11,11 +11,6 @@ import LandingPage from './pages/LandingPage'
 import MissionPage from './pages/MissionPage'
 import Index from './pages/Index'
 import AboutUs from './pages/AboutUs'
-import Profile from './components/Profile'
-import GroupIndex from './components/GroupIndex'
-import GroupShow from './components/GroupShow'
-import Post from './components/Post'
-import RecentPosts from './components/RecentPosts'
 import Footer from './components/Footer'
 import Navigation from './components/Navigation'
 
@@ -29,17 +24,16 @@ class App extends Component {
     return (
       <Router>
         <Navigation {...this.props} />
-        <Index />
-        <GroupIndex />
-        <GroupShow />
-        <RecentPosts />
-        <Post />
-        <Profile />
         <Switch>
-          {!logged_in &&
+          {!logged_in ?
             <Route
               exact path='/'
-              component={LandingPage} />
+              component={LandingPage} /> :
+            <Route
+              exact
+              path='/'
+              component={Index}
+            />
           }
           {!logged_in &&
             <Route
