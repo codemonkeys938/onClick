@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
-import { CardGroup, Card, CardTitle, CardBody, CardText } from 'reactstrap'
-import GroupShow from './GroupShow'
+import { CardGroup, Card, CardTitle, CardText } from 'reactstrap'
 
 class GroupIndex extends Component {
 

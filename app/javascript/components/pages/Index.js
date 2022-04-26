@@ -3,7 +3,6 @@ import GroupIndex from '../components/GroupIndex'
 import GroupShow from '../components/GroupShow'
 import Post from '../components/Post'
 import Profile from '../components/Profile'
-import RecentPosts from '../components/RecentPosts'
 
 class Index extends Component {
   constructor(props) {
@@ -15,6 +14,7 @@ class Index extends Component {
 
   componentDidMount() {
     this.readGroups()
+    this.readPosts()
   }
 
   readGroups = () => {
@@ -24,6 +24,13 @@ class Index extends Component {
       .catch(errors => console.log("Groups read errors:", errors))
   }
 
+  readPosts = () => {
+    fetch("/posts")
+      .then(response => response.json())
+      .then(postArray => this.setState({ posts: postArray }))
+      .catch(errors => console.log("Post read errors", errors))
+  }
+
   render() {
     return (
       <>
@@ -31,8 +38,7 @@ class Index extends Component {
         <Profile />
         <GroupIndex groups={this.state.groups} />
         <GroupShow />
-        <Post />
-        <RecentPosts />
+        <Post posts={this.state.posts} />
       </>
     )
   }
