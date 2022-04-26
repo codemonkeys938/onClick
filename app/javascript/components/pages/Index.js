@@ -36,7 +36,6 @@ class Index extends Component {
       <>
         <h1>Index</h1>
         <Profile {...this.props} />
-        <GroupIndex />
         <GroupIndex groups={this.state.groups} />
         <GroupShow />
         <Post posts={this.state.posts} />
