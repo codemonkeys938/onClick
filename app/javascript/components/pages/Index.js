@@ -11,7 +11,7 @@ class Index extends Component {
     return (
       <>
         <h1>Index</h1>
-        <Profile />
+        <Profile {...this.props} />
         <GroupIndex />
         <GroupShow />
         <Post />
