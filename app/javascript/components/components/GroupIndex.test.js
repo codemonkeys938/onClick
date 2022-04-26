@@ -2,7 +2,7 @@ import React from 'react'
 import Enzyme, { shallow } from 'enzyme'
 import Adapter from 'enzyme-adapter-react-16'
 import GroupIndex from './GroupIndex'
-import { Card, CardTitle, CardText, CardGroup } from 'reactstrap'
+import { Card, CardGroup } from 'reactstrap'
 
 Enzyme.configure({ adapter: new Adapter() })
 
@@ -34,16 +34,6 @@ describe("When GroupIndex renders", () => {
     const card = groupindex.find(Card)
     expect(card.length).toEqual(1)
   })
-
-  // it("displays a card title", () => {
-  //   const title = groupindex.find(CardTitle)
-  //   expect(title.length).toEqual(8)
-  // })
-
-  // it("displays a card text", () => {
-  //   const text = about.find(CardText)
-  //   expect(text.length).toEqual(2)
-  // })
 
 
 })
