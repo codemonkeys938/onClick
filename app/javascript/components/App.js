@@ -13,8 +13,26 @@ import Index from './pages/Index'
 import AboutUs from './pages/AboutUs'
 import Footer from './components/Footer'
 import Navigation from './components/Navigation'
+import ProfileEdit from './pages/ProfileEdit'
+import NewGroup from './pages/NewGroup'
 
 class App extends Component {
+
+  createGroup = (group) => {
+    const csrf = document.querySelector("meta[name='csrf-token']").getAttribute("content")
+    const options = {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'X-Requested-With': 'XMLHttpRequest',
+        'X-CSRF-Token': csrf
+      },
+      body: JSON.stringify({ group: group })
+    }
+    fetch('/groups', options)
+      .catch(errors => console.error(errors))
+  }
+
   render() {
     const {
       logged_in,
@@ -32,7 +50,7 @@ class App extends Component {
             <Route
               exact
               path='/'
-              component={Index}
+              render={(props) => <Index {...this.props} />}
             />
           }
           {!logged_in &&
@@ -47,6 +65,22 @@ class App extends Component {
               exact
               path='/signup'
               component={SignUp}
+            />
+          }
+          {logged_in &&
+            <Route
+              exact
+              path='/profileedit'
+              render={() => {
+                return <ProfileEdit user={this.props.current_user} />
+              }}
+            />
+          }
+          {logged_in &&
+            <Route
+              exact
+              path='/newgroup'
+              render={() => <NewGroup createGroup={this.createGroup} />}
             />
           }
           <Route exact path='/missionpage' component={MissionPage} />

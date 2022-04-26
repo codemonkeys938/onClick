@@ -28,6 +28,8 @@ class Index extends Component {
     return (
       <>
         <h1>Index</h1>
+        <Profile {...this.props} />
+        <GroupIndex />
         <Profile />
         <GroupIndex groups={this.state.groups} />
         <GroupShow />
