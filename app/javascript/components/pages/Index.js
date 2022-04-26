@@ -62,12 +62,16 @@ class Index extends Component {
       .catch(errors => console.error(errors))
   }
 
+  changeGroupView = (group) => {
+    this.setState({ group: group })
+  }
+
   render() {
     return (
       <>
         <h1>Index</h1>
         <Profile {...this.props} />
-        <GroupIndex groups={this.state.groups} />
+        <GroupIndex groups={this.state.groups} changeGroupView={this.changeGroupView} />
         <GroupShow group={this.state.group} createPost={this.createPost} />
         <Post posts={this.state.posts} />
       </>
