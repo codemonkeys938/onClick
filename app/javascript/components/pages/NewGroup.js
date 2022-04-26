@@ -48,7 +48,6 @@ class NewGroup extends Component {
               required
               type='textarea'
               name='description'
-              id='group-description'
               placeholder='Group Description'
               value={form.description}
               onChange={this.handleChange}
