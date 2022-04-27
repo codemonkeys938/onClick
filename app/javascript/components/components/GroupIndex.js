@@ -1,10 +1,32 @@
 import React, { Component } from 'react'
-import { CardGroup, Card, CardTitle, CardText } from 'reactstrap'
+import { CardGroup, Card, CardTitle, CardText, Button } from 'reactstrap'
 
 class GroupIndex extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      form: {
+        name: '',
+        description: ''
+      }
+    }
+  }
+
+  handleChange = e => {
+    const { form } = this.state
+    form[e.target.name] = e.target.value
+    this.setState({ form: form })
+  }
+
+  handleSubmit = () => {
+    const { form } = this.state
+    form.name = ''
+    form.description = ''
+    this.setState({ form: form })
+  }
 
   render() {
-    let { groups } = this.props
+    let { groups, currentUser } = this.props
     return (
       <>
         <h1>Group Index</h1>
@@ -21,7 +43,7 @@ class GroupIndex extends Component {
                 <CardTitle tag="h4">
                   Group Description:
                 </CardTitle>
-                <CardText>
+                < CardText >
                   {group.description}
                 </CardText>
               </Card>

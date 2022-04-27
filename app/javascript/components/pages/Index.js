@@ -97,6 +97,25 @@ class Index extends Component {
       .catch((errors) => console.error(errors))
   }
 
+  deleteGroup = (id) => {
+    const csrf = document.querySelector("meta[name='csrf-token']").getAttribute("content")
+    fetch(`/groups/${id}`, {
+      headers: {
+        "Content-Type": "application/json",
+        'X-Requested-With': 'XMLHttpRequest',
+        'X-CSRF-Token': csrf
+      },
+      method: "DELETE"
+    })
+      .then(response => response.json())
+      .then(() => {
+        const generalGroup = this.state.groups.find(group => group.name === 'General')
+        this.updateGroupView(generalGroup)
+        this.updateGroupsAndPosts()
+      })
+      .catch(errors => console.log("delete errors:", errors))
+  }
+
   updateGroupsAndPosts = () => {
     this.readGroups()
     this.readPosts()
@@ -120,6 +139,7 @@ class Index extends Component {
           createPost={this.createPost}
           updatePost={this.updatePost}
           deletePost={this.deletePost}
+          deleteGroup={this.deleteGroup}
           currentUser={this.props.current_user}
         />
         <Post posts={this.state.posts} />
