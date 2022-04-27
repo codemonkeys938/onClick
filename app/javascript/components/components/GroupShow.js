@@ -54,6 +54,11 @@ class GroupShow extends Component {
     })
   }
 
+  handleDeleteGroup = (group) => {
+    const { id } = group
+    this.props.deleteGroup(id)
+  }
+
   render() {
     const { group, currentUser } = this.props
     const { form, editPost } = this.state
@@ -62,6 +67,16 @@ class GroupShow extends Component {
       <>
         <h1>{group.name || ''}</h1>
         <h2>{group.description || ''}</h2>
+        {group.user_id === currentUser.id ?
+          <div className='btn-container'>
+            <Button
+              color="danger"
+              onClick={() => this.handleDeleteGroup(group)}
+            >
+              Delete
+            </Button></div>
+          : null
+        }
         <div className='posts-container'>
           {group.posts && group.posts.map(post => (
             <Card key={post.id}>

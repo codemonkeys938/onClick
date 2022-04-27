@@ -8,7 +8,7 @@ import {
   Nav,
   NavItem
 } from 'reactstrap'
-import logo from '../assets/logo-draft.png'
+import logo from '../assets/OnClickLogoDraft.png'
 
 class Navigation extends Component {
   constructor(props) {
