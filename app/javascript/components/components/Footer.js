@@ -6,7 +6,7 @@ class Footer extends Component {
     return (
       <>
         <div className="footer">
-          <p>© 2022 | onClick() Application | Capstone Project created by Dane, Jose, Kat, Nico. </p>
+          <div className="footertext"><p>© 2022 | onClick() Application | Capstone Project created by Dane, Jose, Kat, Nico. </p></div>
         </div>
       </>
     )
