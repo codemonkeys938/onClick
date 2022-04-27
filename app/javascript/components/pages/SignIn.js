@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Button, Form, FormGroup, Input, Label } from 'reactstrap'
 
 class SignIn extends Component {
   constructor(props) {
@@ -7,7 +8,8 @@ class SignIn extends Component {
       user: {
         email: '',
         password: ''
-      }
+      },
+      error: false
     }
   }
 
@@ -34,40 +36,52 @@ class SignIn extends Component {
       const { status } = await fetch('/users/sign_in', options)
       if (status === 200) {
         window.location.href = '/'
+      } else {
+        this.setState({ error: true })
       }
     } catch (err) {
-      console.error(err)
+      this.setState({ error: true })
     }
   }
 
   render() {
-    const { user } = this.state
+    const { user, error } = this.state
     return (
-      <div>
-        <h2>Login</h2>
-        <form>
-          <input
-            name='email'
-            type='email'
-            placeholder='email'
-            onChange={this.handleChange}
-            value={user.email}
-          />
-          <br />
-          <input
-            name='password'
-            type='password'
-            placeholder='password'
-            onChange={this.handleChange}
-            value={user.password}
-          />
-          <br />
-          <button
-            onClick={this.handleLogin}
-          >
-            Login
-          </button>
-        </form>
+      <div className='form-container'>
+        <h1 className='header'>Sign In</h1>
+        {error ?
+          <p className='error-txt'>Invalid username or password!</p> :
+          null
+        }
+        <Form>
+          <FormGroup>
+            <Label for='email'>Email</Label>
+            <Input
+              required
+              name='email'
+              type='email'
+              placeholder='Email'
+              onChange={this.handleChange}
+              value={user.email}
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label for='password'>Password</Label>
+            <Input
+              required
+              name='password'
+              type='password'
+              placeholder='Password'
+              onChange={this.handleChange}
+              value={user.password}
+            />
+          </FormGroup>
+        </Form>
+        <div className='btn-container'>
+          <Button onClick={this.handleLogin}>
+            Sign In
+          </Button>
+        </div>
       </div>
     )
   }
