@@ -8,6 +8,7 @@ import {
   Nav,
   NavItem
 } from 'reactstrap'
+import logo from '../assets/logo-draft.png'
 
 class Navigation extends Component {
   constructor(props) {
@@ -30,8 +31,8 @@ class Navigation extends Component {
       sign_out_route
     } = this.props
     return (
-      <Navbar color="light" light expand="md">
-        <NavbarBrand href="/">onClick()</NavbarBrand>
+      <Navbar color="light" light expand="md" sticky="top" >
+        <NavbarBrand href="/"> <img src={logo} width="80px" /></NavbarBrand>
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>
