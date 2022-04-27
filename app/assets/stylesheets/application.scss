@@ -15,6 +15,7 @@
  */
 
 @import 'bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Goldman&family=Montserrat+Alternates:wght@300&display=swap');
 
 .header {
   margin-top: 50px;
@@ -297,4 +298,32 @@ div.navbar-collapse {
 
 .footertext {
   margin-top: 15px;
+}
+
+.missionpage {
+  text-align: center;
+  margin: auto;
+  font-size: 50px;
+  background-color: rgb(235, 232, 229);
+  height: 100vh;
+  font-family: 'Goldman',
+    cursive;
+}
+
+.missiontext {
+  display: inline-flex;
+  font-size: 18px;
+  text-align: center;
+  border: 2px solid black;
+  background: linear-gradient(to right, #D4D3DD, #EFEDBB);
+  width: 50%;
+  border-radius: 10px;
+  padding: 15px 15px;
+  margin-top: 30px;
+  font-family: 'Montserrat Alternates',
+    sans-serif;
+}
+
+.missionlogo {
+  margin-top: 30px;
 }
