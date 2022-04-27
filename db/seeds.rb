@@ -146,11 +146,19 @@ posts = [
     group_id: 3
   },
   {
+    post_text: 'DVP by PUP is my favorite fighting song right now!',
+    group_id: 4
+  },
+  {
     post_text: "El Cotixan for some bomb Mexican food if your're in the El Cajon area",
     group_id: 5
   },
   {
     post_text: 'Has anyone tried Menya Ultra in Kearny Mesa? Is it any good?',
+    group_id: 5
+  },
+  {
+    post_text: 'Sushi Yorimichi has great sushi if you can get past the strip club exterior.',
     group_id: 5
   }
 ]
