@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Button, Form, FormGroup, Input, Label } from 'reactstrap'
 
 class SignUp extends Component {
   constructor(props) {
@@ -9,7 +10,8 @@ class SignUp extends Component {
         email: '',
         password: '',
         password_confirmation: ''
-      }
+      },
+      errors: []
     }
   }
 
@@ -32,9 +34,17 @@ class SignUp extends Component {
       body: JSON.stringify({ user: this.state.user })
     }
     try {
-      const { status } = await fetch('/users', options)
-      if (status === 200) {
+      // const { status } = await fetch('/users', options)
+      const res = await fetch('/users', options)
+      if (res.status === 200) {
         window.location.href = '/'
+      } else if (res.status === 422) {
+        const json = await res.json()
+        const errors = Object.keys(json).map(key => {
+          const error = `${key[0].toUpperCase() + key.slice(1)} ${json[key]}`
+          return error
+        })
+        this.setState({ errors: errors })
       }
     } catch (err) {
       console.error(err)
@@ -42,49 +52,68 @@ class SignUp extends Component {
   }
 
   render() {
-    const { user } = this.state
+    const { user, errors } = this.state
     return (
-      <div>
-        <h1>Sign Up</h1>
-        <form>
-          <input
-            type="text"
-            name='username'
-            placeholder="Username"
-            value={user.username}
-            onChange={this.handleChange}
-          />
-          <br />
-          <input
-            type="email"
-            name='email'
-            placeholder="Email"
-            value={user.email}
-            onChange={this.handleChange}
-          />
-          <br />
-          <input
-            type="password"
-            name='password'
-            placeholder="Password"
-            value={user.password}
-            onChange={this.handleChange}
-          />
-          <br />
-          <input
-            type="password"
-            name='password_confirmation'
-            placeholder="Confirm Password"
-            value={user.password_confirmation}
-            onChange={this.handleChange}
-          />
-          <br />
-          <button
-            onClick={this.handleSignUp}
-          >
-            Sign Up
-          </button>
-        </form>
+      <div className='form-container'>
+        <h1 className='header'>Sign Up</h1>
+        {errors ?
+          errors.map((error, i) => (
+            <p className='error-txt' key={i}>{error}</p>
+          )) : null
+        }
+        <Form>
+          <FormGroup>
+            <Label for='username'>Username</Label>
+            <Input
+              required
+              type="text"
+              name='username'
+              placeholder="Username"
+              value={user.username}
+              onChange={this.handleChange}
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label for='email'>Email</Label>
+            <Input
+              required
+              type="email"
+              name='email'
+              placeholder="Email"
+              value={user.email}
+              onChange={this.handleChange}
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label for='password'>Password</Label>
+            <Input
+              required
+              type="password"
+              name='password'
+              placeholder="Password"
+              value={user.password}
+              onChange={this.handleChange}
+            />
+          </FormGroup>
+          <FormGroup>
+            <Label for='password_confirmation'>Confirm Password</Label>
+            <Input
+              required
+              type="password"
+              name='password_confirmation'
+              placeholder="Confirm Password"
+              value={user.password_confirmation}
+              onChange={this.handleChange}
+            />
+          </FormGroup>
+          <div className="btn-container">
+            <Button
+              onClick={this.handleSignUp}
+            >
+              Sign Up
+            </Button>
+          </div>
+        </Form>
       </div>
     )
   }
