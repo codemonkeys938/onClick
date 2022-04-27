@@ -11,7 +11,7 @@ class GroupIndex extends Component {
         <CardGroup>
           {groups && groups.map(group => {
             return (
-              <Card key={group.id} onClick={() => this.props.changeGroupView(group)}>
+              <Card key={group.id} onClick={() => this.props.updateGroupView(group)}>
                 <CardTitle tag="h4">
                   Group Title:
                 </CardTitle>
