@@ -19,7 +19,7 @@ import { Container } from 'reactstrap'
 
 class App extends Component {
 
-  createGroup = (group) => {
+  createGroup = async (group) => {
     const csrf = document.querySelector("meta[name='csrf-token']").getAttribute("content")
     const options = {
       method: 'POST',
@@ -30,8 +30,11 @@ class App extends Component {
       },
       body: JSON.stringify({ group: group })
     }
-    fetch('/groups', options)
-      .catch(errors => console.error(errors))
+    try {
+      return await fetch('/groups', options)
+    } catch (err) {
+      console.error(err)
+    }
   }
 
   render() {

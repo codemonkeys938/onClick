@@ -10,6 +10,7 @@ class NewGroup extends Component {
         name: '',
         description: ''
       },
+      errors: [],
       submitted: false
     }
   }
@@ -20,16 +21,25 @@ class NewGroup extends Component {
     this.setState({ form: form })
   }
 
-  handleSubmit = () => {
-    this.props.createGroup(this.state.form)
-    this.setState({ submitted: true })
+  handleSubmit = async () => {
+    const res = await this.props.createGroup(this.state.form)
+    if (res.status === 200) {
+      this.setState({ submitted: true })
+    } else if (res.status === 422) {
+      const json = await res.json()
+      const errors = Object.keys(json).map(key => `${key} ${json[key]}`)
+      this.setState({ errors: errors })
+    }
   }
 
   render() {
-    const { form } = this.state
+    const { form, errors } = this.state
     return (
       <div className='form-container'>
         <h1 className='header'>Create A New Group</h1>
+        {errors ? errors.map((error, i) => (
+          <p key={i} className='error-txt'>{error}</p>
+        )) : null}
         <Form>
           <FormGroup>
             <Label for='name'>Group Name</Label>
