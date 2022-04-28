@@ -51,6 +51,10 @@ $rose-brown: #B38F8F;
   }
 }
 
+.nl {
+  text-decoration: none;
+}
+
 .profile-btn {
   margin: 10px 0 0 10px;
 }
@@ -137,6 +141,14 @@ div.navbar-collapse {
 .navbar {
   background: linear-gradient(to right, #bdd3e0, #eccad5);
   padding: 5px 50px;
+
+.landing-page-bg {
+  width: 100vw;
+  height: 100vh;
+  z-index: -1;
+  position: fixed;
+  top: 0;
+  left: 0;
 }
 
 // Index Page
@@ -226,230 +238,18 @@ div.navbar-collapse {
 
 //********************LANDING PAGE START********************// 
 
-.section {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  margin-top: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 0px;
-  padding-bottom: 0px;
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-}
-
-.section-2 {
-  width: 100%;
-  align-self: stretch;
-  flex-grow: 1;
-  max-width: 1200px;
-  display: flex;
-  flex-direction: column;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.div {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  margin-top: 0px;
-  padding-left: 20px;
-  padding-right: 20px;
-  padding-top: 0px;
-  padding-bottom: 50px;
-  width: 100vw;
-  margin-left: calc(50% - 50vw);
-  background-image: url(https://cdn.builder.io/api/v1/image/assets%2Fb4a3d5b660374f2b89c977d814952186%2F83eeb73cc06a418e936dd358b27d0ec8?width=2000);
-  background-repeat: no-repeat;
-  background-position: left;
-  background-size: cover;
-  height: 100vh;
-  filter: brightness(60%);
-}
-
-@media (max-width: 991px) {
-  .div {
-    position: absolute;
-    height: 100%;
-    top: 0px;
-    left: 0px;
-    right: 0px;
-  }
-}
-
-.section-3 {
-  width: 100%;
-  align-self: stretch;
-  flex-grow: 1;
-  max-width: 1200px;
-  display: flex;
-  flex-direction: column;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-.div-2 {
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  height: auto;
-  right: 0px;
-  left: 0px;
-  bottom: 0px;
-  top: 0px;
-  padding-top: 30px;
-  padding-bottom: 30px;
-  justify-content: center;
-  flex-grow: 0;
-}
-
-@media (max-width: 991px) {
-  .div-2 {
-    position: relative;
-  }
-}
-
-.div-3 {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  margin-top: 20px;
-  line-height: normal;
-  height: auto;
-  text-align: center;
-  font-size: 72px;
-  color: rgba(255, 255, 255, 1);
-  font-weight: 700;
-  text-shadow: 1px 1px 3px rgba(0, 0, 0, 1);
-}
-
-@media (max-width: 991px) {
-  .div-3 {
-    font-size: 60px;
-  }
-}
-
-@media (max-width: 640px) {
-  .div-3 {
-    font-size: 52px;
-    margin-top: 0px;
-  }
-}
-
-@media (max-width: 980px) {
-  .card-group {
-    display: block;
-  }
-}
-
-.div-4 {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  margin-top: 10px;
-  line-height: normal;
-  height: auto;
-  text-align: center;
-  color: rgba(255, 255, 255, 1);
-  font-weight: 500;
-  font-size: 18px;
-}
-
-.div-5 {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  margin-top: 20px;
-  height: auto;
-  padding-bottom: 0px;
-  width: 40%;
-  margin-left: auto;
-  margin-right: auto;
-}
-
-@media (max-width: 991px) {
-  .div-5 {
-    width: 90%;
-  }
-}
-
-@media (max-width: 640px) {
-  .div-5 {
-    width: 90%;
-    padding-bottom: 0px;
-    flex-grow: 0;
-    justify-content: center;
-  }
-}
-
-.div-6 {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  margin-top: -1px;
-  height: auto;
-  padding-bottom: 0px;
-}
-
-.div-7 {
-  display: flex;
-  flex-direction: row;
-  position: relative;
-  margin-top: 15px;
-  padding-bottom: 30px;
-  width: 25%;
-  margin-left: auto;
-  margin-right: auto;
-  justify-content: space-between;
-}
-
-@media (max-width: 991px) {
-  .div-7 {
-    width: 60%;
-  }
-}
-
-@media (max-width: 640px) {
-  .div-7 {
-    width: 95%;
-    flex-direction: column;
-    align-items: center;
-  }
-}
-
-.span {
-  display: flex;
-  flex-direction: column;
-  position: relative;
-  margin-top: auto;
-  appearance: none;
-  padding-top: 15px;
-  padding-bottom: 15px;
-  padding-left: 25px;
-  padding-right: 25px;
-  color: white;
-  border-radius: 4px;
-  text-align: center;
-  cursor: pointer;
-  border-style: solid;
-  border-color: rgb(255, 255, 255);
-  border-width: 1px;
-  width: 49%;
-  margin-bottom: auto;
-}
-
-.createdon {
-  font-size: 12px;
-}
-
 #signUpButton {
-  background: transparent;
+  background-color: $black;
+  opacity: .6;
+  color: $white;
   text-align: center;
-  margin: 0 40px;
+  margin-left: 40px;
   display: flex;
   justify-content: space-evenly;
+}
+
+.landing-page-btns {
+  margin-top: 60px;
 }
 
 @media (max-width: 640px) {
@@ -538,3 +338,4 @@ h4 {
 .aboutusname {
   font-weight: 400;
 }
+
