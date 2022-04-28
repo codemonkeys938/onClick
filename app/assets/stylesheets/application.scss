@@ -136,24 +136,13 @@ div.navbar-collapse {
 }
 
 .landing-page-bg {
-  // background-size: contain;
-  // object-fit: contain;
-  // object-fit: cover;
   width: 100vw;
   height: 100vh;
   z-index: -1;
-  // object-position: center;
   position: fixed;
   top: 0;
   left: 0;
 }
-
-// @media screen and (max-width: 500px) {
-//   .landing-page-bg {
-//     overflow: hidden;
-//     width: auto;
-//   }
-// }
 
 // Index Page
 .background-image {
