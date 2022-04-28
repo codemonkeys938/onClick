@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :posts
   resources :groups
+  resources :users, only: [:index]
   devise_for :users, controllers: {
     registrations: 'registrations/registrations'
   }

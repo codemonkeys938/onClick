@@ -10,6 +10,7 @@ class Index extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      users: [],
       groups: [],
       group: {}
     }
@@ -17,6 +18,7 @@ class Index extends Component {
 
   componentDidMount() {
     this.updateGroupsAndPosts()
+    this.readUsers()
   }
 
   componentDidUpdate(_, prevState) {
@@ -28,6 +30,13 @@ class Index extends Component {
       const updatedGroup = this.state.groups.find(group => group.id === this.state.group.id)
       this.updateGroupView(updatedGroup)
     }
+  }
+
+  readUsers = () => {
+    fetch('/users')
+      .then(response => response.json())
+      .then(users => this.setState({ users: users }))
+      .catch(errors => console.error(errors))
   }
 
   readGroups = () => {
@@ -138,6 +147,7 @@ class Index extends Component {
         </div>
         <div className='index-center'>
           <GroupShow
+            users={this.state.users}
             group={this.state.group}
             createPost={this.createPost}
             updatePost={this.updatePost}
