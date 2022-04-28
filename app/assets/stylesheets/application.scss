@@ -67,12 +67,15 @@ $rose-brown: #B38F8F;
 textarea {
   height: 300px;
   resize: none;
+
 }
 
 textarea,
 input,
 .card {
   background-color: $white !important;
+  box-shadow: rgba(0, 0, 0, 0.19) 0px 10px 20px,
+    rgba(0, 0, 0, 0.23) 0px 6px 6px;
 }
 
 .center-text {
@@ -135,6 +138,10 @@ div.navbar-collapse {
   font-size: 18px;
 }
 
+.navbar {
+  background: linear-gradient(to right, #bdd3e0, #eccad5);
+  padding: 5px 50px;
+
 .landing-page-bg {
   width: 100vw;
   height: 100vh;
@@ -177,6 +184,10 @@ div.navbar-collapse {
     sans-serif;
 }
 
+.card-header {
+  font-size: 14px;
+}
+
 .form-container.post {
   width: 100%;
 }
@@ -192,6 +203,11 @@ div.navbar-collapse {
   font-family: 'Montserrat Alternates',
     sans-serif;
 }
+
+.aboutuscards>.card-group>.card {
+  margin: 10px 10px;
+}
+
 
 .card-text {
   padding: 6px;
@@ -247,15 +263,15 @@ div.navbar-collapse {
 .footer {
   height: 60px;
   text-align: center;
-  background-color: rgb(250, 250, 250);
+  background: linear-gradient(to right, #bdd3e0, #eccad5);
   vertical-align: middle;
   color: black;
   position: fixed;
   bottom: 0;
   left: 0;
   width: 100%;
-  font-family: 'Montserrat Alternates',
-    sans-serif;
+  font-family: 'Goldman',
+    cursive;
 }
 
 .footertext {
@@ -267,7 +283,6 @@ div.navbar-collapse {
   margin: auto;
   font-size: 50px;
   background-color: rgb(235, 232, 229);
-  height: 100vh;
   font-family: 'Goldman',
     cursive;
 }
@@ -310,12 +325,17 @@ h4 {
   background-color: rgb(235, 232, 229);
 }
 
-.aboutuscards {
-  display: inline-block;
-  justify-content: space-between;
-}
-
 .errorpage {
   text-align: center;
   background-color: rgb(235, 232, 229);
 }
+
+.form-label {
+  font-family: 'Goldman',
+    cursive;
+}
+
+.aboutusname {
+  font-weight: 400;
+}
+

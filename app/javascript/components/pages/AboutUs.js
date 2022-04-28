@@ -1,5 +1,8 @@
 import React, { Component } from 'react'
 import { Card, CardGroup, CardImg, CardSubtitle, CardTitle, CardBody, CardText } from 'reactstrap'
+import joseicon from '../assets/hi.png'
+import katicon from '../assets/my cat says hi.png'
+import daneicon from '../assets/File.png'
 
 
 class AboutUs extends Component {
@@ -13,13 +16,13 @@ class AboutUs extends Component {
             <Card>
               <CardImg
                 alt="Card image cap"
-                src="https://picsum.photos/318/180"
+                src="https://avatars.githubusercontent.com/u/99694167?v=4"
                 top
                 width="100%"
               />
               <CardBody>
                 <CardTitle tag="h5">
-                  Nico
+                  <strong className="aboutusname">Nico</strong>
                 </CardTitle>
                 <CardSubtitle
                   className="mb-2 text-muted"
@@ -35,13 +38,13 @@ class AboutUs extends Component {
             <Card>
               <CardImg
                 alt="Card image cap"
-                src="https://picsum.photos/318/180"
+                src={joseicon}
                 top
                 width="100%"
               />
               <CardBody>
                 <CardTitle tag="h5">
-                  Jose
+                  <strong className="aboutusname">Jose</strong>
                 </CardTitle>
                 <CardSubtitle
                   className="mb-2 text-muted"
@@ -57,13 +60,13 @@ class AboutUs extends Component {
             <Card>
               <CardImg
                 alt="Card image cap"
-                src="https://picsum.photos/318/180"
+                src={daneicon}
                 top
                 width="100%"
               />
               <CardBody>
                 <CardTitle tag="h5">
-                  Dane
+                  <strong className="aboutusname">Dane</strong>
                 </CardTitle>
                 <CardSubtitle
                   className="mb-2 text-muted"
@@ -79,13 +82,13 @@ class AboutUs extends Component {
             <Card>
               <CardImg
                 alt="Card image cap"
-                src="https://picsum.photos/318/180"
+                src={katicon}
                 top
                 width="100%"
               />
               <CardBody>
                 <CardTitle tag="h5">
-                  Kat
+                  <strong className="aboutusname">Kat</strong>
                 </CardTitle>
                 <CardSubtitle
                   className="mb-2 text-muted"

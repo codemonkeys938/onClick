@@ -6,14 +6,17 @@ import {
   NavbarToggler,
   NavbarBrand,
   Nav,
-  NavItem
+  NavItem,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownItem,
+  DropdownMenu
 } from 'reactstrap'
 import logo from '../assets/OnClickLogoDraft.png'
 
 class Navigation extends Component {
   constructor(props) {
     super(props)
-
     this.toggle = this.toggle.bind(this)
     this.state = {
       isOpen: false
@@ -24,22 +27,27 @@ class Navigation extends Component {
       isOpen: !this.state.isOpen
     })
   }
+
   render() {
     const {
       logged_in,
       current_user,
       sign_out_route
     } = this.props
+
+    console.log(this.state.active)
+
     return (
       <Navbar color="light" light expand="md" sticky="top" >
-        <NavbarBrand href="/"> <img src={logo} width="70px" /></NavbarBrand>
+        <NavbarBrand href="/"> <img src={logo} width="40px" /></NavbarBrand>
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>
-          <Nav className="ml-auto" navbar>
+          <Nav className="ml-auto" navbar >
             <NavItem>
               <NavLink
                 to='/'
                 className='nav-link'
+                exact={true}
               >
                 Home
               </NavLink>
@@ -90,7 +98,7 @@ class Navigation extends Component {
                 </a>
               </NavItem>
             }
-            {logged_in &&
+            {/* {logged_in &&
               <NavItem>
                 <span
                   className='nav-link'
@@ -98,6 +106,26 @@ class Navigation extends Component {
                   {current_user.username}
                 </span>
               </NavItem>
+            } */}
+            {logged_in &&
+              <UncontrolledDropdown nav inNavbar>
+                <DropdownToggle nav caret>
+                  {current_user.username}
+                </DropdownToggle>
+                <DropdownMenu left>
+                  <DropdownItem>
+                    <NavLink className="nav-link" to="/profileedit">
+                      Edit Profile
+                    </NavLink>
+                  </DropdownItem>
+                  <DropdownItem divider />
+                  <DropdownItem>
+                    <NavLink className="nav-link" to="/newgroup">
+                      New Group
+                    </NavLink>
+                  </DropdownItem>
+                </DropdownMenu>
+              </UncontrolledDropdown>
             }
           </Nav>
         </Collapse>
