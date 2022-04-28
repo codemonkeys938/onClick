@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Card, CardText, Form, FormGroup, Input, Label, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap'
+import { Button, Card, CardFooter, CardText, Form, FormGroup, Input, Label, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap'
 
 class GroupShow extends Component {
   constructor(props) {
@@ -59,18 +59,22 @@ class GroupShow extends Component {
     this.props.deleteGroup(id)
   }
 
+  formatDate = (date) => {
+    return new Date(date).toLocaleDateString('en-US')
+  }
+
   render() {
     const { group, currentUser } = this.props
     const { form, editPost } = this.state
     if (!group.id) return
     return (
       <>
-        <h1>{group.name || ''}</h1>
-        <h2>{group.description || ''}</h2>
+        <h1 className='center-text'>{group.name || ''}</h1>
+        <h4 className='center-text'>{group.description || ''}</h4>
         {group.user_id === currentUser.id ?
           <div className='btn-container'>
             <Button
-              color="danger"
+              className='delete-btn'
               onClick={() => this.handleDeleteGroup(group)}
             >
               Delete
@@ -85,11 +89,14 @@ class GroupShow extends Component {
               </CardText>
               {post.user_id === currentUser.id ?
                 <div className='btn-container'>
-                  <Button onClick={() => this.openEditModal(post)}>
+                  <Button
+                    className='edit-btn'
+                    onClick={() => this.openEditModal(post)}
+                  >
                     Edit
                   </Button>
                   <Button
-                    color='danger'
+                    className='delete-btn'
                     onClick={() => this.handleDelete(post)}
                   >
                     Delete
@@ -97,13 +104,18 @@ class GroupShow extends Component {
                 </div>
                 : null
               }
+              <CardFooter>
+                <span>
+                  Created On: {this.formatDate(group.created_at)}
+                </span>
+              </CardFooter>
             </Card>
           ))}
         </div>
-        <div className='form-container'>
+        <div className='form-container post'>
           <Form>
             <FormGroup>
-              <Label for='post_text'>New Post</Label>
+              <Label style={{ marginTop: '20px' }} for='post_text'>Got something to say?</Label>
               <Input
                 required
                 type='textarea'
@@ -115,7 +127,7 @@ class GroupShow extends Component {
             </FormGroup>
           </Form>
           <div className='btn-container'>
-            <Button onClick={this.handleSubmit}>
+            <Button className='new-btn' onClick={this.handleSubmit}>
               Add
             </Button>
           </div>
@@ -133,12 +145,12 @@ class GroupShow extends Component {
           </ModalBody>
           <ModalFooter>
             <Button
-              color="danger"
+              className='delete-btn'
               onClick={this.toggle}
             >
               Cancel
             </Button>
-            <Button onClick={this.handleUpdate}>
+            <Button className='edit-btn' onClick={this.handleUpdate}>
               Edit Post
             </Button>
           </ModalFooter>

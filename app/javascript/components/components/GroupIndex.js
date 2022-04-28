@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { CardGroup, Card, CardTitle, CardText, Button } from 'reactstrap'
+import { Card, CardText } from 'reactstrap'
 
 class GroupIndex extends Component {
   constructor(props) {
@@ -26,30 +26,22 @@ class GroupIndex extends Component {
   }
 
   render() {
-    let { groups, currentUser } = this.props
+    let { groups } = this.props
     return (
       <>
-        <h1>Group Index</h1>
-        <CardGroup>
-          {groups && groups.map(group => {
-            return (
-              <Card key={group.id} onClick={() => this.props.updateGroupView(group)}>
-                <CardTitle tag="h4">
-                  Group Title:
-                </CardTitle>
-                <CardText>
-                  {group.name}
-                </CardText>
-                <CardTitle tag="h4">
-                  Group Description:
-                </CardTitle>
-                < CardText >
-                  {group.description}
-                </CardText>
-              </Card>
-            )
-          })}
-        </CardGroup>
+        <h3>Groups To Check Out:</h3>
+        <div className='card-container'>
+          {groups && groups.map(group => (
+            <Card
+              key={group.id}
+              onClick={() => this.props.updateGroupView(group)}
+            >
+              <CardText className='group-name'>
+                {group.name}
+              </CardText>
+            </Card>
+          ))}
+        </div>
       </>
     )
   }

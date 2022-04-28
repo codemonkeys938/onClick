@@ -13,9 +13,21 @@
  *= require_tree .
  *= require_self
  */
-
 @import 'bootstrap';
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Hairline&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Goldman&family=Montserrat+Alternates:wght@300&display=swap');
+
+$white: #EFEFEF;
+$red: #B52828;
+$yellow: #EBE27E;
+$blue: #9FC0D1;
+$black: #231406;
+$pink: #F1A7BE;
+$rose-brown: #B38F8F;
+
+@function shade($color) {
+  @return mix(black, $color, 20%);
+}
 
 .header {
   margin-top: 50px;
@@ -53,14 +65,136 @@ textarea {
   resize: none;
 }
 
-.error-txt {
+textarea,
+input,
+.card {
+  background-color: $white !important;
+}
+
+.center-text {
   text-align: center;
-  color: red;
+}
+
+.error-txt {
+  color: $red;
+}
+
+.btn {
+  border: 1px solid rgba(0, 0, 0, 0.5);
+  box-sizing: border-box;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+  border-radius: 22px;
+  font-family: 'Bungee Hairline',
+    cursive;
+  font-weight: bolder;
+  font-size: small;
+  color: $black;
+  padding: 4px 8px;
+  margin: 5px 0;
+  width: 130px;
+}
+
+.new-btn {
+  background-color: $blue;
+
+  &:hover {
+    background-color: shade($blue);
+  }
+}
+
+.delete-btn {
+  background-color: $red;
+
+  &:hover {
+    background-color: shade($red);
+  }
+}
+
+.edit-btn {
+  background-color: $yellow;
+
+  &:hover {
+    background-color: shade($yellow);
+  }
+}
+
+// App
+.container {
+  padding: 50px 0 100px 0;
 }
 
 // Navbar
 div.navbar-collapse {
   justify-content: right;
+}
+
+// Index Page
+.background-image {
+  z-index: -1;
+  position: fixed;
+  top: 0;
+  left: 0;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.index-container {
+  display: flex;
+  justify-content: space-between;
+}
+
+.index-left {
+  width: 15%;
+}
+
+.index-center {
+  width: 45%;
+}
+
+.index-right {
+  width: 15%;
+}
+
+.card-container {
+  flex-direction: column;
+}
+
+.form-container.post {
+  width: 100%;
+}
+
+.profile-container {
+  margin-bottom: 20px;
+}
+
+// Card
+.card {
+  margin: 5px 0;
+}
+
+.card-text {
+  padding: 6px;
+}
+
+.card-footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.posts-container>.card>p.card-text {
+  padding: 10px;
+}
+
+.posts-container>.card>.btn-container>.btn {
+  margin: 5px;
+}
+
+.group-name,
+.card-container>.card {
+
+  &:hover {
+    cursor: pointer;
+  }
 }
 
 //********************LANDING PAGE START********************// 

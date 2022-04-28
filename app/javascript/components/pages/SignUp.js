@@ -58,7 +58,7 @@ class SignUp extends Component {
         <h1 className='header'>Sign Up</h1>
         {errors ?
           errors.map((error, i) => (
-            <p className='error-txt' key={i}>{error}</p>
+            <p className='error-txt center' key={i}>{error}</p>
           )) : null
         }
         <Form>

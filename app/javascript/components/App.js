@@ -15,6 +15,7 @@ import Footer from './components/Footer'
 import Navigation from './components/Navigation'
 import ProfileEdit from './pages/ProfileEdit'
 import NewGroup from './pages/NewGroup'
+import { Container } from 'reactstrap'
 
 class App extends Component {
 
@@ -42,51 +43,53 @@ class App extends Component {
     return (
       <Router>
         <Navigation {...this.props} />
-        <Switch>
-          {!logged_in ?
-            <Route
-              exact path='/'
-              component={LandingPage} /> :
-            <Route
-              exact
-              path='/'
-              render={(props) => <Index {...this.props} />}
-            />
-          }
-          {!logged_in &&
-            <Route
-              exact
-              path='/signin'
-              component={SignIn}
-            />
-          }
-          {!logged_in &&
-            <Route
-              exact
-              path='/signup'
-              component={SignUp}
-            />
-          }
-          {logged_in &&
-            <Route
-              exact
-              path='/profileedit'
-              render={() => {
-                return <ProfileEdit user={this.props.current_user} />
-              }}
-            />
-          }
-          {logged_in &&
-            <Route
-              exact
-              path='/newgroup'
-              render={() => <NewGroup createGroup={this.createGroup} />}
-            />
-          }
-          <Route exact path='/missionpage' component={MissionPage} />
-          <Route exact path='/aboutus' component={AboutUs} />
-          <Route path='*' component={ErrorPage} />
-        </Switch>
+        <Container>
+          <Switch>
+            {!logged_in ?
+              <Route
+                exact path='/'
+                component={LandingPage} /> :
+              <Route
+                exact
+                path='/'
+                render={(props) => <Index {...this.props} />}
+              />
+            }
+            {!logged_in &&
+              <Route
+                exact
+                path='/signin'
+                component={SignIn}
+              />
+            }
+            {!logged_in &&
+              <Route
+                exact
+                path='/signup'
+                component={SignUp}
+              />
+            }
+            {logged_in &&
+              <Route
+                exact
+                path='/profileedit'
+                render={() => {
+                  return <ProfileEdit user={this.props.current_user} />
+                }}
+              />
+            }
+            {logged_in &&
+              <Route
+                exact
+                path='/newgroup'
+                render={() => <NewGroup createGroup={this.createGroup} />}
+              />
+            }
+            <Route exact path='/missionpage' component={MissionPage} />
+            <Route exact path='/aboutus' component={AboutUs} />
+            <Route path='*' component={ErrorPage} />
+          </Switch>
+        </Container>
         <Footer />
       </Router>
     )

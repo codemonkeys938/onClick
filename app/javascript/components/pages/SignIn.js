@@ -50,7 +50,7 @@ class SignIn extends Component {
       <div className='form-container'>
         <h1 className='header'>Sign In</h1>
         {error ?
-          <p className='error-txt'>Invalid username or password!</p> :
+          <p className='error-txt center'>Invalid username or password!</p> :
           null
         }
         <Form>
