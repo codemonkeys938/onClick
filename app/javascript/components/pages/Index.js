@@ -1,9 +1,10 @@
 import React, { Component } from 'react'
-import { Redirect } from 'react-router-dom'
 import GroupIndex from '../components/GroupIndex'
 import GroupShow from '../components/GroupShow'
 import Post from '../components/Post'
 import Profile from '../components/Profile'
+
+import background from '../assets/BackgroundU.png'
 
 class Index extends Component {
   constructor(props) {
@@ -18,7 +19,7 @@ class Index extends Component {
     this.updateGroupsAndPosts()
   }
 
-  componentDidUpdate(prevProps, prevState) {
+  componentDidUpdate(_, prevState) {
     if (!this.state.group.name) {
       const generalGroup = this.state.groups.find(group => group.name === 'General')
       if (!generalGroup) return
@@ -127,24 +128,33 @@ class Index extends Component {
 
   render() {
     return (
-      <>
-        <h1>Index</h1>
-        <Profile {...this.props} />
-        <GroupIndex
-          groups={this.state.groups}
-          updateGroupView={this.updateGroupView}
-        />
-        <GroupShow
-          group={this.state.group}
-          createPost={this.createPost}
-          updatePost={this.updatePost}
-          deletePost={this.deletePost}
-          deleteGroup={this.deleteGroup}
-          currentUser={this.props.current_user}
-        />
-        <Post posts={this.state.posts} />
-        {this.state.submitted && <Redirect to='/' />}
-      </>
+      <div className='index-container'>
+        <div className='index-left'>
+          <Profile {...this.props} />
+          <GroupIndex
+            groups={this.state.groups}
+            updateGroupView={this.updateGroupView}
+          />
+        </div>
+        <div className='index-center'>
+          <GroupShow
+            group={this.state.group}
+            createPost={this.createPost}
+            updatePost={this.updatePost}
+            deletePost={this.deletePost}
+            deleteGroup={this.deleteGroup}
+            currentUser={this.props.current_user}
+          />
+        </div>
+        <div className='index-right'>
+          <Post
+            posts={this.state.posts}
+            groups={this.state.groups}
+            updateGroupView={this.updateGroupView}
+          />
+        </div>
+        <img className='background-image' src={background} />
+      </div>
     )
   }
 }
