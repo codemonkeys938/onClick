@@ -32,7 +32,7 @@ class Navigation extends Component {
     } = this.props
     return (
       <Navbar color="light" light expand="md" sticky="top" >
-        <NavbarBrand href="/"> <img src={logo} width="80px" /></NavbarBrand>
+        <NavbarBrand href="/"> <img src={logo} width="70px" /></NavbarBrand>
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>
           <Nav className="ml-auto" navbar>

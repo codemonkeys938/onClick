@@ -114,7 +114,7 @@ class GroupShow extends Component {
                 : null
               }
               <CardFooter>
-                <span>
+                <span className="createdon">
                   Created On: {this.formatDate(group.created_at)}
                 </span>
               </CardFooter>
