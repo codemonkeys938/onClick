@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { NavLink } from 'react-router-dom';
+import React, { Component } from "react"
+import { NavLink } from "react-router-dom"
 import {
   Collapse,
   Navbar,
@@ -11,8 +11,8 @@ import {
   DropdownToggle,
   DropdownItem,
   DropdownMenu
-} from 'reactstrap'
-import logo from '../assets/OnClickLogoDraft.png'
+} from "reactstrap"
+import logo from "../assets/OnClickLogoDraft.png"
 
 class Navigation extends Component {
   constructor(props) {
@@ -29,90 +29,59 @@ class Navigation extends Component {
   }
 
   render() {
-    const {
-      logged_in,
-      current_user,
-      sign_out_route
-    } = this.props
-
-    console.log(this.state.active)
+    const { logged_in, current_user, sign_out_route } = this.props
 
     return (
-      <Navbar color="light" light expand="md" sticky="top" >
-        <NavbarBrand href="/"> <img src={logo} width="40px" /></NavbarBrand>
+      <Navbar color="light" light expand="md" sticky="top">
+        <NavbarBrand href="/">
+          {" "}
+          <img src={logo} width="40px" />
+        </NavbarBrand>
         <NavbarToggler onClick={this.toggle} />
         <Collapse isOpen={this.state.isOpen} navbar>
-          <Nav className="ml-auto" navbar >
+          <Nav className="ml-auto" navbar>
             <NavItem>
-              <NavLink
-                to='/'
-                className='nav-link'
-                exact={true}
-              >
+              <NavLink to="/" className="nav-link" exact={true}>
                 Home
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink
-                to='/missionpage'
-                className='nav-link'
-              >
+              <NavLink to="/missionpage" className="nav-link">
                 Our Mission
               </NavLink>
             </NavItem>
             <NavItem>
-              <NavLink
-                to='/aboutus'
-                className='nav-link'
-              >
+              <NavLink to="/aboutus" className="nav-link">
                 About Us
               </NavLink>
             </NavItem>
-            {!logged_in &&
+            {!logged_in && (
               <NavItem>
-                <NavLink
-                  to='/signin'
-                  className='nav-link'
-                >
+                <NavLink to="/signin" className="nav-link">
                   Sign In
                 </NavLink>
               </NavItem>
-            }
-            {!logged_in &&
+            )}
+            {!logged_in && (
               <NavItem>
-                <NavLink
-                  to='/signup'
-                  className='nav-link'
-                >
+                <NavLink to="/signup" className="nav-link">
                   Sign Up
                 </NavLink>
               </NavItem>
-            }
-            {logged_in &&
+            )}
+            {logged_in && (
               <NavItem>
-                <a
-                  href={sign_out_route}
-                  className='nav-link'
-                >
+                <a href={sign_out_route} className="nav-link">
                   Sign Out
                 </a>
               </NavItem>
-            }
-            {/* {logged_in &&
-              <NavItem>
-                <span
-                  className='nav-link'
-                >
-                  {current_user.username}
-                </span>
-              </NavItem>
-            } */}
-            {logged_in &&
+            )}
+            {logged_in && (
               <UncontrolledDropdown nav inNavbar>
                 <DropdownToggle nav caret>
                   {current_user.username}
                 </DropdownToggle>
-                <DropdownMenu left>
+                <DropdownMenu>
                   <DropdownItem>
                     <NavLink className="nav-link" to="/profileedit">
                       Edit Profile
@@ -126,7 +95,7 @@ class Navigation extends Component {
                   </DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
-            }
+            )}
           </Nav>
         </Collapse>
       </Navbar>
