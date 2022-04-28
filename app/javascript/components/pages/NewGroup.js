@@ -27,7 +27,7 @@ class NewGroup extends Component {
       this.setState({ submitted: true })
     } else if (res.status === 422) {
       const json = await res.json()
-      const errors = Object.keys(json).map(key => `${key} ${json[key]}`)
+      const errors = Object.keys(json).map(key => `${key[0].toUpperCase() + key.slice(1)} ${json[key]}`)
       this.setState({ errors: errors })
     }
   }
@@ -38,7 +38,7 @@ class NewGroup extends Component {
       <div className='form-container'>
         <h1 className='header'>Create A New Group</h1>
         {errors ? errors.map((error, i) => (
-          <p key={i} className='error-txt'>{error}</p>
+          <p key={i} className='error-txt center-text'>{error}</p>
         )) : null}
         <Form>
           <FormGroup>
