@@ -42,7 +42,7 @@ class App extends Component {
       logged_in,
       current_user
     } = this.props
-    console.log(logged_in, current_user)
+
     return (
       <Router>
         <Navigation {...this.props} />
