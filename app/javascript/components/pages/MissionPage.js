@@ -15,6 +15,8 @@ class MissionPage extends Component {
             <img src={logo} width="280px" />
           </div>
         </div>
+        <div className="background-image missionpage">
+        </div>
       </>
     )
   }
