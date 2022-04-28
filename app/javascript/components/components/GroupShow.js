@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button, Card, CardFooter, CardText, Form, FormGroup, Input, Label, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap'
+import { Button, Card, CardFooter, CardHeader, CardText, Form, FormGroup, Input, Label, Modal, ModalBody, ModalFooter, ModalHeader } from 'reactstrap'
 
 class GroupShow extends Component {
   constructor(props) {
@@ -63,6 +63,12 @@ class GroupShow extends Component {
     return new Date(date).toLocaleDateString('en-US')
   }
 
+  getUsername = id => {
+    const { users } = this.props
+    const user = users.find(user => user.id === id)
+    return user ? user.username : ''
+  }
+
   render() {
     const { group, currentUser } = this.props
     const { form, editPost } = this.state
@@ -84,6 +90,9 @@ class GroupShow extends Component {
         <div className='posts-container'>
           {group.posts && group.posts.map(post => (
             <Card key={post.id}>
+              <CardHeader>
+                @{this.getUsername(post.user_id)}
+              </CardHeader>
               <CardText>
                 {post.post_text}
               </CardText>
