@@ -5,9 +5,18 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :validatable
 
   has_many :groups
-
   has_many :posts
 
   validates :username, :password_confirmation, presence: true
   validates :username, uniqueness: true
+
+  validate :password_complexity
+end
+
+def password_complexity
+  if password.present?
+    if !password.match(/^(?=.*[a-z])(?=.*[A-Z])/)
+      errors.add :password, "password must have at least one capital letter"
+    end
+  end
 end

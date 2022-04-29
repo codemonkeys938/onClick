@@ -1,35 +1,32 @@
-require 'rails_helper'
+require "rails_helper"
 
 RSpec.describe Post, type: :model do
-  it {should validate_presence_of(:post_text)}
-  it {should validate_length_of(:post_text).is_at_most(1000)}
-
-  it 'should add a valid post to the DB' do
-
-    post = create(:post)
-
-    expect(post).to be_valid
-
-    posts = Post.all
-
-    expect(posts.length).to eq 1
-    expect(posts.first.post_text).to eq post.post_text
+  describe "associations" do
+    it { should belong_to(:user) }
+    it { should belong_to(:group) }
   end
 
-  it 'should allow a user that did not create the group to submit a post' do
-    post = create(:post)
+  describe "validations" do
+    it {
+      should validate_presence_of(:post_text)
+               .with_message("can't be blank")
+    }
 
-    group_owner_id = post.group.user_id
-    group_poster_id = post.user.id
+    it {
+      should validate_length_of(:post_text)
+               .is_at_most(1000)
+               .with_message("is too long (maximum is 1000 characters)")
+    }
 
-    expect(group_owner_id).to_not eq group_poster_id
-  end
+    it {
+      should allow_value("Here's a post on a group!")
+               .for(:post_text)
+    }
 
-  it 'should allow a group owner to post on their own group' do
-    group_owner = create(:user)
-    group = create(:group, user: group_owner)
-    post = create(:post, group: group, user: group_owner)
-
-    expect(group_owner.id).to eq post.user_id
+    it {
+      should_not allow_value("x" * 1500)
+                   .for(:post_text)
+                   .with_message("is too long (maximum is 1000 characters)")
+    }
   end
 end
