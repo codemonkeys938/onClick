@@ -1,17 +1,17 @@
-import React, { Component } from 'react'
-import { Button, Form, FormGroup, Input, Label } from 'reactstrap'
+import React, { Component } from "react"
+import { Button, Form, FormGroup, Input, Label } from "reactstrap"
 
 class ProfileEdit extends Component {
   constructor(props) {
     super(props)
     this.state = {
       form: {
-        username: '',
-        email: '',
-        password: '',
-        password_confirmation: '',
-        current_password: ''
-      }
+        username: "",
+        email: "",
+        password: "",
+        password_confirmation: ""
+      },
+      errors: []
     }
   }
 
@@ -22,7 +22,7 @@ class ProfileEdit extends Component {
     this.setState({ form: form })
   }
 
-  handleChange = e => {
+  handleChange = (e) => {
     const { form } = this.state
     form[e.target.name] = e.target.value
     this.setState({ form: form })
@@ -30,27 +30,55 @@ class ProfileEdit extends Component {
 
   handleUpdateAccount = async () => {
     const { form } = this.state
-    const user = { ...form }
-    if (!form.password.length || !form.password_confirmation.length) {
-      user.password = form.current_password
-      user.password_confirmation = form.current_password
-    }
-    const csrf = document.querySelector("meta[name='csrf-token']").getAttribute("content")
+    const csrf = document
+      .querySelector("meta[name='csrf-token']")
+      .getAttribute("content")
     const options = {
-      method: 'PATCH',
+      method: "PATCH",
       headers: {
-        'Content-Type': 'application/json',
-        'X-Requested-With': 'XMLHttpRequest',
-        'X-CSRF-Token': csrf
+        "Content-Type": "application/json",
+        "X-Requested-With": "XMLHttpRequest",
+        "X-CSRF-Token": csrf
       },
-      body: JSON.stringify({ user: user })
+      body: JSON.stringify({ user: form })
     }
     try {
-      const { status } = await fetch('/users', options)
-      // on success the response tries to 'PATCH /localhost:3000' for a redirect for some reason
-      // for now, check for 404 to know that it was it was a success until solution is found
-      if (status === 404) {
-        window.location.href = '/'
+      const res = await fetch("/users", options)
+      if (res.status === 200) {
+        window.location.href = "/"
+      } else if (res.status === 422) {
+        const json = await res.json()
+        const errors = Object.keys(json).map(
+          (key) => `${key[0].toUpperCase() + key.slice(1)} ${json[key]}`
+        )
+        this.setState({ errors: errors })
+      }
+    } catch (err) {
+      console.error(err)
+    }
+  }
+
+  handleDeleteAccout = async () => {
+    if (!window.confirm("Are you sure you want to delete your account?")) return
+    const csrf = document
+      .querySelector("meta[name='csrf-token']")
+      .getAttribute("content")
+    const options = {
+      method: "DELETE",
+      headers: {
+        "Content-Type": "application/json",
+        "X-Requested-With": "XMLHttpRequest",
+        "X-CSRF-Token": csrf
+      }
+    }
+    try {
+      const res = await fetch("/users/", options)
+      if (res.status === 200) {
+        window.location.href = "/"
+      } else {
+        this.setState({
+          errors: ["Could not delete account. Try again later."]
+        })
       }
     } catch (err) {
       console.error(err)
@@ -58,74 +86,74 @@ class ProfileEdit extends Component {
   }
 
   render() {
-    const { form } = this.state
+    const { form, errors } = this.state
     return (
-      <div className='form-container'>
-        <h1 className='header'>Update Your Profile</h1>
+      <div className="form-container">
+        <h1 className="header">Update Your Profile</h1>
+        {errors.length
+          ? errors.map((err, i) => (
+              <p key={i} className="error-txt center-text">
+                {err}
+              </p>
+            ))
+          : null}
         <Form>
           <FormGroup>
-            <Label for='username'>Username</Label>
+            <Label for="username">Username</Label>
             <Input
               required
-              type='text'
-              name='username'
-              placeholder='Username'
+              type="text"
+              name="username"
+              placeholder="Username"
               value={form.username}
               onChange={this.handleChange}
             />
           </FormGroup>
           <FormGroup>
-            <Label for='email'>Email</Label>
+            <Label for="email">Email</Label>
             <Input
               required
-              type='email'
-              name='email'
-              placeholder='Email'
+              type="email"
+              name="email"
+              placeholder="Email"
               value={form.email}
               onChange={this.handleChange}
             />
           </FormGroup>
-          <p>Leave the next two fields blank if you do not want to change your password.</p>
+          <p style={{ marginTop: "60px" }}>
+            Leave the next two fields blank if you do not want to change your
+            password.
+          </p>
           <FormGroup>
-            <Label for='password'>New Password</Label>
+            <Label for="password">New Password</Label>
             <Input
-              type='password'
-              name='password'
-              placeholder='New Password'
+              type="password"
+              name="password"
+              placeholder="New Password"
               value={form.password}
               onChange={this.handleChange}
             />
           </FormGroup>
           <FormGroup>
-            <Label for='password_confirmation'>Confirm New Password</Label>
+            <Label for="password_confirmation">Confirm New Password</Label>
             <Input
-              type='password'
-              name='password_confirmation'
-              placeholder='Confirm New Password'
+              type="password"
+              name="password_confirmation"
+              placeholder="Confirm New Password"
               value={form.password_confirmation}
               onChange={this.handleChange}
             />
           </FormGroup>
-          <FormGroup>
-            <Label for='current_password'>Current Password</Label>
-            <Input
-              required
-              type='password'
-              name='current_password'
-              placeholder='Current Password (we need this to confirm your changes)'
-              value={form.current_password}
-              onChange={this.handleChange}
-            />
-          </FormGroup>
         </Form>
-        <div className='btn-container'>
+        <div className="btn-container">
           <Button
-            className='profile-btn'
+            style={{ marginRight: "10px" }}
+            className="edit-btn"
             onClick={this.handleUpdateAccount}
           >
             Update Profile
           </Button>
-          <Button className='profile-btn' color='danger'>
+          <Button className="delete-btn" onClick={this.handleDeleteAccout}>
             Delete Account
           </Button>
         </div>
