@@ -53,7 +53,7 @@ class AboutUs extends Component {
                   Project Manager
                 </CardSubtitle>
                 <CardText>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                  That rewarding feeling you get after creating something from a blank canvas is the best and the main reason why I got into software development. Outside of programming, I like to spend time with my family and eat tacos all day. “If it aint broke, don't fix it” - Bert Lance
                 </CardText>
               </CardBody>
             </Card>
@@ -75,7 +75,7 @@ class AboutUs extends Component {
                   Tech Lead
                 </CardSubtitle>
                 <CardText>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                  Puzzle enthusiast that enjoys taking on new and unique problems.  When I'm not ruining my posture sitting at a computer all day, you find me walking along the beach or playing catch with my friends.  "Never memorize something that you can look up." ― Albert Einstein
                 </CardText>
               </CardBody>
             </Card>
@@ -97,7 +97,7 @@ class AboutUs extends Component {
                   Design Lead
                 </CardSubtitle>
                 <CardText>
-                  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                  UX/UI/Random backgrounds, Keeper of The Wireframes, and Guardian of CSS. I draw pictures and occasionally do code. When I'm not doing mock-ups or UI, I'm petting cats and wondering if they hate me. “Learn the rules like a pro, so you can break them like an artist” ~Pablo Picasso"
                 </CardText>
               </CardBody>
             </Card>
