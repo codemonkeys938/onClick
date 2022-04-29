@@ -24,11 +24,6 @@ RSpec.describe User, type: :model do
     }
 
     it {
-      should validate_presence_of(:password_confirmation)
-               .with_message("can't be blank")
-    }
-
-    it {
       should validate_uniqueness_of(:username)
                .with_message("has already been taken")
     }
