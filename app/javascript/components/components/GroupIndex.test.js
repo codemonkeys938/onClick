@@ -1,8 +1,8 @@
-import React from 'react'
-import Enzyme, { shallow } from 'enzyme'
-import Adapter from 'enzyme-adapter-react-16'
-import GroupIndex from './GroupIndex'
-import { Card, CardGroup } from 'reactstrap'
+import React from "react"
+import Enzyme, { shallow } from "enzyme"
+import Adapter from "enzyme-adapter-react-16"
+import GroupIndex from "./GroupIndex"
+import { Card, CardGroup } from "reactstrap"
 
 Enzyme.configure({ adapter: new Adapter() })
 
@@ -21,20 +21,12 @@ describe("When GroupIndex renders", () => {
   })
 
   it("displays a header", () => {
-    const header = groupindex.find('h1')
-    expect(header.text()).toEqual("Group Index")
-  })
-
-  it("displays a card group", () => {
-    const cardgroup = groupindex.find(CardGroup)
-    expect(cardgroup.length).toEqual(1)
+    const header = groupindex.find("h3")
+    expect(header.text()).toEqual("Groups To Check Out:")
   })
 
   it("displays a card", () => {
     const card = groupindex.find(Card)
     expect(card.length).toEqual(1)
   })
-
-
 })
-
