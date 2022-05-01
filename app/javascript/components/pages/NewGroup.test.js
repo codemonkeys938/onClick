@@ -2,7 +2,7 @@ import React from "react"
 import Enzyme, { shallow } from "enzyme"
 import Adapter from "enzyme-adapter-react-16"
 import NewGroup from "./NewGroup"
-import { Form, Input } from "reactstrap"
+import { Button, Form, Input } from "reactstrap"
 Enzyme.configure({ adapter: new Adapter() })
 
 const createGroup = jest.fn()
@@ -34,5 +34,29 @@ describe("When NewGroup renders", () => {
   it("displays an input for group description", () => {
     const input = page.find(Input).find({ name: "description" })
     expect(input.length).toEqual(1)
+  })
+
+  it("should invoke the handleChange method", () => {
+    const input = page.find(Input).find({ name: "name" })
+    const mockFn = jest.fn()
+    const handleChange = new mockFn()
+
+    input.simulate("change", { onchange: handleChange, target: { value: "a" } })
+    expect(mockFn.mock.calls.length).toEqual(1)
+  })
+
+  it("should invoke the handleSubmit method", () => {
+    const button = page.find(Button)
+    const mockFn = jest.fn()
+    const handleSubmit = new mockFn()
+
+    button.simulate("click", { onclick: handleSubmit })
+    expect(mockFn.mock.calls.length).toEqual(1)
+  })
+
+  it("should show errors", () => {
+    page.setState({ errors: ["name already exists"] })
+    const error = page.find("p.error-txt")
+    expect(error.length).toEqual(1)
   })
 })

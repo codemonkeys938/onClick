@@ -22,21 +22,20 @@ class SignUp extends Component {
     this.setState({ user: user })
   }
 
-  handleSignUp = async (e) => {
-    e.preventDefault()
-    const csrf = document
-      .querySelector("meta[name='csrf-token']")
-      .getAttribute("content")
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "X-Requested-With": "XMLHttpRequest",
-        "X-CSRF-Token": csrf
-      },
-      body: JSON.stringify({ user: this.state.user })
-    }
+  handleSignUp = async () => {
     try {
+      const csrf = document
+        .querySelector("meta[name='csrf-token']")
+        .getAttribute("content")
+      const options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-Requested-With": "XMLHttpRequest",
+          "X-CSRF-Token": csrf
+        },
+        body: JSON.stringify({ user: this.state.user })
+      }
       const res = await fetch("/users", options)
       if (res.status === 200) {
         window.location.href = "/"

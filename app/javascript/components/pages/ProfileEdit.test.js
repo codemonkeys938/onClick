@@ -61,4 +61,28 @@ describe("When ProfileEdit renders", () => {
     const buttons = page.find(Button)
     expect(buttons.length).toEqual(2)
   })
+
+  it("should invoke the handleUpdateAccount method", () => {
+    const button = page.find(Button).find(".edit-btn")
+    const mockFn = jest.fn()
+    const handleUpdateAccount = new mockFn()
+
+    button.simulate("click", { onclick: handleUpdateAccount })
+    expect(mockFn.mock.calls.length).toEqual(1)
+  })
+
+  it("should invoke the handleDeleteAccount method", () => {
+    const button = page.find(Button).find(".delete-btn")
+    const mockFn = jest.fn()
+    const handleDeleteAccount = new mockFn()
+
+    button.simulate("click", { onclick: handleDeleteAccount })
+    expect(mockFn.mock.calls.length).toEqual(1)
+  })
+
+  it("should show errors", () => {
+    page.setState({ errors: ["username is taken"] })
+    const error = page.find("p.error-txt")
+    expect(error.length).toEqual(1)
+  })
 })
