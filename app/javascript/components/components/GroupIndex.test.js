@@ -2,7 +2,7 @@ import React from "react"
 import Enzyme, { shallow } from "enzyme"
 import Adapter from "enzyme-adapter-react-16"
 import GroupIndex from "./GroupIndex"
-import { Card, CardGroup } from "reactstrap"
+import { Card } from "reactstrap"
 
 Enzyme.configure({ adapter: new Adapter() })
 
@@ -14,10 +14,15 @@ const groups = [
   }
 ]
 
+const props = {
+  updateGroupView: jest.fn(),
+  groups: groups
+}
+
 describe("When GroupIndex renders", () => {
   let groupindex
   beforeEach(() => {
-    groupindex = shallow(<GroupIndex groups={groups} />)
+    groupindex = shallow(<GroupIndex groups={groups} {...props} />)
   })
 
   it("displays a header", () => {
@@ -28,5 +33,11 @@ describe("When GroupIndex renders", () => {
   it("displays a card", () => {
     const card = groupindex.find(Card)
     expect(card.length).toEqual(1)
+  })
+
+  it("should invoke the updateGroupView method", () => {
+    const card = groupindex.find(Card)
+    card.simulate("click")
+    expect(props.updateGroupView).toHaveBeenCalled()
   })
 })
