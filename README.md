@@ -6,11 +6,17 @@ onClick is a full stack application that is mainly used for networking with othe
 <br>
 
 ## **Live Application:**
-Click here to launch [onClick() Application](https://whispering-cliffs-33805.herokuapp.com/
-)!
+Click here to launch [onClick()](https://whispering-cliffs-33805.herokuapp.com/) application.
 <br>
 <br>
 
+## **Get Started**
+* $ bundle install
+* $ yarn 
+* $ rails db:setup
+* $ rails s
+<br>
+<br>
 
 ## **Features**
 
@@ -32,7 +38,6 @@ Click here to launch [onClick() Application](https://whispering-cliffs-33805.her
 <br>
 <br>
 
-
 ## **User Stories** 
 
 * As a user, I can ***create*** an account. 
@@ -51,12 +56,12 @@ Click here to launch [onClick() Application](https://whispering-cliffs-33805.her
 <br>
 <br>
 
-
 ## **Developers / Contributors**
 
 1. Product Manager - Nico
 2. Project Manager - Jose 
 3. Tech Lead - Dane
 4. Design Lead - Kat
+
 
 
