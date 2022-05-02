@@ -12,9 +12,10 @@ class GroupIndex extends Component {
             groups.map((group) => (
               <Card
                 key={group.id}
+                className="group-name"
                 onClick={() => this.props.updateGroupView(group)}
               >
-                <CardText className="group-name">{group.name}</CardText>
+                <CardText>{group.name}</CardText>
               </Card>
             ))}
         </div>

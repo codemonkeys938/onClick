@@ -236,10 +236,11 @@ div.navbar-collapse {
 }
 
 .group-name,
-.card-container>.card {
+.recent-post.card {
 
   &:hover {
     cursor: pointer;
+    background-color: shade($white)!important;
   }
 }
 
@@ -344,4 +345,15 @@ h4 {
 
 .aboutusname {
   font-weight: 400px;
+}
+
+// Modal
+.modal-content {
+  background-color: rgb(235, 232, 229);
+}
+
+.modal-footer> button {
+  &:first-child {
+    margin-right: 10px;
+  }
 }
