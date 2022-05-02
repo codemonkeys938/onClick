@@ -22,15 +22,19 @@ class NewGroup extends Component {
   }
 
   handleSubmit = async () => {
-    const res = await this.props.createGroup(this.state.form)
-    if (res.status === 200) {
-      this.setState({ submitted: true })
-    } else if (res.status === 422) {
-      const json = await res.json()
-      const errors = Object.keys(json).map(
-        (key) => `${key[0].toUpperCase() + key.slice(1)} ${json[key]}`
-      )
-      this.setState({ errors: errors })
+    try {
+      const res = await this.props.createGroup(this.state.form)
+      if (res.status === 200) {
+        this.setState({ submitted: true })
+      } else if (res.status === 422) {
+        const json = await res.json()
+        const errors = Object.keys(json).map(
+          (key) => `${key[0].toUpperCase() + key.slice(1)} ${json[key]}`
+        )
+        this.setState({ errors: errors })
+      }
+    } catch (err) {
+      console.error(err)
     }
   }
 

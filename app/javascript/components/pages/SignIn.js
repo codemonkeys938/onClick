@@ -20,22 +20,20 @@ class SignIn extends Component {
     this.setState({ user: user })
   }
 
-  handleLogin = async (e) => {
-    e.preventDefault()
-    const csrf = document
-      .querySelector("meta[name='csrf-token']")
-      .getAttribute("content")
-    const options = {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "X-Requested-With": "XMLHttpRequest",
-        "X-CSRF-Token": csrf
-      },
-      body: JSON.stringify({ user: this.state.user })
-    }
-
+  handleLogin = async () => {
     try {
+      const csrf = document
+        .querySelector("meta[name='csrf-token']")
+        .getAttribute("content")
+      const options = {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "X-Requested-With": "XMLHttpRequest",
+          "X-CSRF-Token": csrf
+        },
+        body: JSON.stringify({ user: this.state.user })
+      }
       const { status } = await fetch("/users/sign_in", options)
       if (status === 200) {
         window.location.href = "/"

@@ -30,19 +30,19 @@ class ProfileEdit extends Component {
 
   handleUpdateAccount = async () => {
     const { form } = this.state
-    const csrf = document
-      .querySelector("meta[name='csrf-token']")
-      .getAttribute("content")
-    const options = {
-      method: "PATCH",
-      headers: {
-        "Content-Type": "application/json",
-        "X-Requested-With": "XMLHttpRequest",
-        "X-CSRF-Token": csrf
-      },
-      body: JSON.stringify({ user: form })
-    }
     try {
+      const csrf = document
+        .querySelector("meta[name='csrf-token']")
+        .getAttribute("content")
+      const options = {
+        method: "PATCH",
+        headers: {
+          "Content-Type": "application/json",
+          "X-Requested-With": "XMLHttpRequest",
+          "X-CSRF-Token": csrf
+        },
+        body: JSON.stringify({ user: form })
+      }
       const res = await fetch("/users", options)
       if (res.status === 200) {
         window.location.href = "/"
@@ -59,19 +59,20 @@ class ProfileEdit extends Component {
   }
 
   handleDeleteAccout = async () => {
-    if (!window.confirm("Are you sure you want to delete your account?")) return
-    const csrf = document
-      .querySelector("meta[name='csrf-token']")
-      .getAttribute("content")
-    const options = {
-      method: "DELETE",
-      headers: {
-        "Content-Type": "application/json",
-        "X-Requested-With": "XMLHttpRequest",
-        "X-CSRF-Token": csrf
-      }
-    }
     try {
+      if (!window.confirm("Are you sure you want to delete your account?"))
+        return
+      const csrf = document
+        .querySelector("meta[name='csrf-token']")
+        .getAttribute("content")
+      const options = {
+        method: "DELETE",
+        headers: {
+          "Content-Type": "application/json",
+          "X-Requested-With": "XMLHttpRequest",
+          "X-CSRF-Token": csrf
+        }
+      }
       const res = await fetch("/users/", options)
       if (res.status === 200) {
         window.location.href = "/"
