@@ -79,6 +79,7 @@ class NewGroup extends Component {
             Create Group
           </Button>
         </div>
+        <div className="background-image missionpage"></div>
         {this.state.submitted && <Redirect to="/" />}
       </div>
     )

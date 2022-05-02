@@ -158,6 +158,7 @@ class ProfileEdit extends Component {
             Delete Account
           </Button>
         </div>
+        <div className="background-image missionpage"></div>
       </div>
     )
   }
