@@ -165,11 +165,11 @@ class GroupShow extends Component {
             />
           </ModalBody>
           <ModalFooter>
-            <Button className="delete-btn" onClick={this.toggle}>
-              Cancel
-            </Button>
             <Button className="edit-btn" onClick={this.handleUpdate}>
               Edit Post
+            </Button>
+            <Button className="delete-btn" onClick={this.toggle}>
+              Cancel
             </Button>
           </ModalFooter>
         </Modal>

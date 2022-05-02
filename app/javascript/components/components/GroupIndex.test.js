@@ -22,7 +22,7 @@ const props = {
 describe("When GroupIndex renders", () => {
   let groupindex
   beforeEach(() => {
-    groupindex = shallow(<GroupIndex groups={groups} {...props} />)
+    groupindex = shallow(<GroupIndex {...props} />)
   })
 
   it("displays a header", () => {
